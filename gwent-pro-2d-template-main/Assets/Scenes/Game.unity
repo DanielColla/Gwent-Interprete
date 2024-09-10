@@ -385,27 +385,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 135388987}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!1 &158754885
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 158754888}
   - component: {fileID: 158754887}
   m_Layer: 5
-  m_Name: EndYourTurn
+  m_Name: EndYourRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,22 +489,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792175172}
+      - m_Target: {fileID: 1792175174}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: EndYourTurn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1792175172}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: Victory
-        m_Mode: 1
+        m_MethodName: EndRound
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -683,7 +671,7 @@ GameObject:
   - component: {fileID: 271833079}
   - component: {fileID: 271833078}
   m_Layer: 5
-  m_Name: 'EndOponentTurn '
+  m_Name: EndOponentRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -753,22 +741,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792175172}
+      - m_Target: {fileID: 1792175174}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: EndOponentTurn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1792175172}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: Victory
-        m_Mode: 1
+        m_MethodName: EndRound
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -983,27 +959,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 324310796}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &324310798
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1218,27 +1194,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 354083754}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &354083756
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1652,27 +1628,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 437183258}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &437183260
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2099,27 +2075,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 583126079}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &583126081
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2334,27 +2310,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 606717156}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &606717158
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2641,18 +2617,6 @@ MonoBehaviour:
   CardPrefab: {fileID: 0}
   Hand: {fileID: 950017558}
   HandOponent: {fileID: 0}
-  aumento1: {fileID: 0}
-  aumento2: {fileID: 0}
-  aumento3: {fileID: 0}
-  aumentoO1: {fileID: 0}
-  aumentoO2: {fileID: 0}
-  aumentoO3: {fileID: 0}
-  clima1: {fileID: 0}
-  clima2: {fileID: 0}
-  despeje1: {fileID: 0}
-  despeje2: {fileID: 0}
-  lider1: {fileID: 0}
-  lider2: {fileID: 0}
   CardsInDeck:
   - {fileID: 0}
   - {fileID: 0}
@@ -2678,7 +2642,6 @@ MonoBehaviour:
   - {fileID: 0}
   passTurn: {fileID: 158754885}
   turnsystem: {fileID: 1792175171}
-  countDraw: 0
   cardsDrawnThisTurn: 0
   maxCardsPerTurn: 10
   deckScript: {fileID: 0}
@@ -2889,7 +2852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: passTurn
+  m_text: EndRound
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3558,27 +3521,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 1023071588}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &1023071590
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4144,27 +4107,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 1224364423}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &1224364425
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4379,27 +4342,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 1307546273}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &1307546275
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4805,27 +4768,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 1489722380}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &1489722382
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5418,7 +5381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: passTurn
+  m_text: EndRound
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5504,7 +5467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1792175173}
-  - component: {fileID: 1792175172}
+  - component: {fileID: 1792175174}
   m_Layer: 0
   m_Name: TurnSystem
   m_TagString: Untagged
@@ -5512,57 +5475,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1792175172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792175171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MYGraveyard: {fileID: 135388987}
-  OponentGraveyard: {fileID: 1173704281}
-  MyZone:
-  - {fileID: 1462804295}
-  - {fileID: 532694815}
-  - {fileID: 963069943}
-  - {fileID: 1950860957}
-  - {fileID: 1856750772}
-  - {fileID: 354083754}
-  - {fileID: 1307546273}
-  - {fileID: 324310796}
-  - {fileID: 437183258}
-  OponentZone:
-  - {fileID: 1750278071}
-  - {fileID: 399800344}
-  - {fileID: 2053196587}
-  - {fileID: 583126079}
-  - {fileID: 1224364423}
-  - {fileID: 2033213272}
-  - {fileID: 606717156}
-  - {fileID: 1023071588}
-  - {fileID: 1489722380}
-  DiffenceZone: {fileID: 950017558}
-  DiffenceOponentZone: {fileID: 68112446}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
-  TurnText: {fileID: 1982085589}
-  VictoryText: {fileID: 989012237}
-  deck1: {fileID: 781961826}
-  deck2: {fileID: 2047269550}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
 --- !u!4 &1792175173
 Transform:
   m_ObjectHideFlags: 0
@@ -5578,6 +5490,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792175174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792175171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 158754887}
+  endOpponentRoundButton: {fileID: 271833078}
+  opponentHand: {fileID: 68112446}
+  playerHand: {fileID: 950017558}
+  blockhandoponent: {fileID: 68112446}
+  blockHand: {fileID: 950017558}
+  MYGraveyard: {fileID: 135388987}
+  OponentGraveyard: {fileID: 1173704281}
+  Graveyards:
+  - {fileID: 135388987}
+  - {fileID: 1173704281}
+  MyZone:
+  - {fileID: 1462804295}
+  - {fileID: 532694815}
+  - {fileID: 963069943}
+  - {fileID: 1950860957}
+  - {fileID: 1856750772}
+  - {fileID: 354083754}
+  - {fileID: 324310796}
+  - {fileID: 1307546273}
+  - {fileID: 437183258}
+  OponentZone:
+  - {fileID: 1750278071}
+  - {fileID: 399800344}
+  - {fileID: 2053196587}
+  - {fileID: 583126079}
+  - {fileID: 1224364423}
+  - {fileID: 2033213272}
+  - {fileID: 1023071588}
+  - {fileID: 606717156}
+  - {fileID: 1489722380}
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
+  TurnText: {fileID: 1982085589}
+  VictoryText: {fileID: 989012237}
+  deck1: {fileID: 781961826}
+  deck2: {fileID: 2047269550}
+  isYourTurn: 1
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!1001 &1856750770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5741,27 +5706,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 1856750772}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &1856750774
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5976,27 +5941,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 1950860957}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &1950860959
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6345,27 +6310,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b2f6a27e85c3a4eba6722f2a892d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endYourRoundButton: {fileID: 0}
+  endOpponentRoundButton: {fileID: 0}
+  opponentHand: {fileID: 0}
+  playerHand: {fileID: 0}
+  blockhandoponent: {fileID: 0}
+  blockHand: {fileID: 0}
   MYGraveyard: {fileID: 2033213272}
   OponentGraveyard: {fileID: 1173704281}
+  Graveyards: []
   MyZone: []
   OponentZone: []
-  DiffenceZone: {fileID: 781961826}
-  DiffenceOponentZone: {fileID: 2047269550}
-  isYourTurn: 0
-  EndRound: 0
-  YourGainedRound: 0
-  OponentGainedRound: 0
-  YourTotalPower: 0
-  OponentTotalPower: 0
-  PassCounter: 0
-  pointfinal: 0
-  pointfinal2: 0
+  yourRoundWins: 0
+  opponentRoundWins: 0
+  roundsRequiredToWin: 2
   TurnText: {fileID: 1982085589}
   VictoryText: {fileID: 989012237}
   deck1: {fileID: 0}
   deck2: {fileID: 0}
-  opponentTurnEnded: 0
-  playerTurnEnded: 0
+  isYourTurn: 0
+  roundEnded: 0
+  IsFirstTurn: 1
 --- !u!225 &2033213274
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6479,18 +6444,6 @@ MonoBehaviour:
   CardPrefab: {fileID: 0}
   Hand: {fileID: 68112446}
   HandOponent: {fileID: 0}
-  aumento1: {fileID: 0}
-  aumento2: {fileID: 0}
-  aumento3: {fileID: 0}
-  aumentoO1: {fileID: 0}
-  aumentoO2: {fileID: 0}
-  aumentoO3: {fileID: 0}
-  clima1: {fileID: 0}
-  clima2: {fileID: 0}
-  despeje1: {fileID: 0}
-  despeje2: {fileID: 0}
-  lider1: {fileID: 0}
-  lider2: {fileID: 0}
   CardsInDeck:
   - {fileID: 0}
   - {fileID: 0}
@@ -6516,7 +6469,6 @@ MonoBehaviour:
   - {fileID: 0}
   passTurn: {fileID: 271833075}
   turnsystem: {fileID: 1792175171}
-  countDraw: 0
   cardsDrawnThisTurn: 0
   maxCardsPerTurn: 10
   deckScript: {fileID: 0}

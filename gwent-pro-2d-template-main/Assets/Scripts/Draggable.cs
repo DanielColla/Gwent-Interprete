@@ -22,11 +22,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private int[] OponentZoneCount = new int[9];
     public GameObject MYGraveyard;
     public GameObject OponentGraveyard;
-
+ private GameController gameController;
+ 
     void Start()
     {
         Hand = GameObject.Find("Hand");
         HandOponent = GameObject.Find("Hand Oponent");
+        gameController = GameObject.FindObjectOfType<GameController>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -69,201 +71,175 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         // Llamar a la función Effect después de verificar que la carta está en el campo
         Effect();
         Debug.Log("Efecto Activado");
+        // Cambiar el turno automáticamente después de colocar la carta
+            gameController.ChangeTurn();
     }
+   
 }
-
-
-     void Effect()
+  void Effect()
     {
-    switch (this.GetComponent<ThisCard>().descriptionHability)
-    {
-        case "addaument":
-            HandleAddAument();
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-
-            break;
-
-        case "addclimate":
-            HandleAddClimate();
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-
-            break;
-
-        case "deletemax":
-            HandleDeleteMax();
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-
-            break;
-
-        case "deletemin":
-            HandleDeleteMin();
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-
-            break;
-
-        case "addcard":
-            HandleAddCard();
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-
-            break;
-
-        case "sendToGraveyard"://despeje
-            HandleSendToGraveyard();
-            Debug.Log("Parent actual de la carta: " + this.transform.parent.name);
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-
-            break;
-
-        case "effectclima":  //clima
-            HandleEffectClima();
-            Debug.Log("Parent actual de la carta: " + this.transform.parent.name);
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-
-            break;
-
-        case "effectboost":   // aumento
-            HandleEffectBoost();
-            Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
-            Debug.Log("Parent actual de la carta: " + this.transform.parent.name);
-            break;
-
-        case "nuevaHabilidad":
-            HandleNuevaHabilidad();
-            break;     
-    }
-}
-
- void HandleAddAument()
-{
-    if (IsInAllowedPositions(MyZone, 0, 1, 2))
-    {
-        MoveCardToZone(Hand, MyZone, 3, 4, 5);
-    }
-    else if (IsInAllowedPositions(OponentZone, 0, 1, 2))
-    {
-        MoveCardToZone(HandOponent, OponentZone, 3, 4, 5);
-    }
-}
-
- void HandleAddClimate()
-{
-    if (IsInAllowedPositions(MyZone, 0, 1, 2))
-    {
-        MoveCardToZone(Hand, MyZone, 7);
-    }
-    else if (IsInAllowedPositions(OponentZone, 0, 1, 2))
-    {
-        MoveCardToZone(HandOponent, OponentZone, 7);
-    }
-}
-
- void HandleDeleteMax()
-{
-    if (IsInAllowedPositions(MyZone, 0, 1, 2))
-    {
-        GameObject targetCard = FindCardWithMaxPower(OponentZone);
-        if (targetCard != null)
+        switch (this.GetComponent<ThisCard>().descriptionHability)
         {
-            targetCard.transform.SetParent(OponentGraveyard.transform);
+            case "addaument":
+                HandleAddAument();
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                break;
+
+            case "addclimate":
+                HandleAddClimate();
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                break;
+
+            case "deletemax":
+                HandleDeleteMax();
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                break;
+
+            case "deletemin":
+                HandleDeleteMin();
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                break;
+
+            case "addcard":
+                HandleAddCard();
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                break;
+
+            case "sendToGraveyard":
+                HandleSendToGraveyard();
+                Debug.Log("Parent actual de la carta: " + this.transform.parent.name);
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                break;
+
+            case "effectclima":
+                HandleEffectClima();
+                Debug.Log("Parent actual de la carta: " + this.transform.parent.name);
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                break;
+
+            case "effectboost":
+                HandleEffectBoost();
+                Debug.Log("Activando efecto: " + this.GetComponent<ThisCard>().descriptionHability);
+                Debug.Log("Parent actual de la carta: " + this.transform.parent.name);
+                break;
+
+            case "nuevaHabilidad":
+                HandleNuevaHabilidad();
+                break;
         }
     }
-    else if (IsInAllowedPositions(OponentZone, 0, 1, 2))
+
+    public IEnumerable<GameObject> Selector()
     {
-        GameObject targetCard = FindCardWithMaxPower(MyZone);
-        if (targetCard != null)
+        if (gameController.isYourTurn) // Usa la instancia de gameController
         {
-            targetCard.transform.SetParent(MYGraveyard.transform);
+            return gameController.MyZone; // Devuelve la zona del jugador
+        }
+        else
+        {
+            return gameController.OponentZone; // Devuelve la zona del oponente
         }
     }
-}
 
- void HandleDeleteMin()
-{
-    if (IsInAllowedPositions(MyZone, 0, 1, 2))
+    public GameObject GetGraveyard()
     {
-        GameObject targetCard = FindCardWithMinPower(OponentZone);
-        if (targetCard != null)
+        if (gameController.isYourTurn) // Usa la instancia de gameController
         {
-            targetCard.transform.SetParent(OponentGraveyard.transform);
+             return gameController.Graveyards[0]; 
+        }
+        else
+        {
+            return gameController.Graveyards[0]; 
+        }
+      
+    }
+
+    void HandleAddAument()
+    {
+        List<GameObject> zone = new List<GameObject>(Selector());
+        if (IsInAllowedPositions(zone, 0, 1, 2))
+        {
+            MoveCardToZone(Hand, zone, 3, 4, 5);
         }
     }
-    else if (IsInAllowedPositions(OponentZone, 0, 1, 2))
+
+    void HandleAddClimate()
     {
-        GameObject targetCard = FindCardWithMinPower(MyZone);
-        if (targetCard != null)
+        List<GameObject> zone = new List<GameObject>(Selector());
+        if (IsInAllowedPositions(zone, 0, 1, 2))
         {
-            targetCard.transform.SetParent(MYGraveyard.transform);
+            MoveCardToZone(Hand, zone, 7);
         }
     }
-}
 
- void HandleAddCard()
-{
-    Draw drawScript = FindObjectOfType<Draw>();
-    Button drawButton = drawScript.GetComponent<Button>();
-    if (drawButton != null)
+    void HandleDeleteMax()
     {
-        drawButton.interactable = true;
-    }
-}
-
- void HandleSendToGraveyard()
-{
-    if (IsInAllowedPositions(MyZone, 0, 1, 2))
-    {
-        SendZoneToGraveyard(OponentZone, OponentGraveyard);
-    }
-    else if (IsInAllowedPositions(OponentZone, 0, 1, 2))
-    {
-        SendZoneToGraveyard(MyZone, MYGraveyard);
-    }
-}
-
- void HandleEffectClima()
-{
-    if (IsInAllowedPositions(MyZone, 6))
-    {
-        SendZoneToGraveyard(OponentZone, OponentGraveyard);
-    }
-    else if (IsInAllowedPositions(OponentZone, 6))
-    {
-        SendZoneToGraveyard(MyZone, MYGraveyard);
-    }
-}
-
- void HandleEffectBoost()
-  {
-    if (IsInAllowedPositions(MyZone, 0,1, 2))
-    {
-        BoostZone(MyZone, 0, 2);
-    }
-    else if (IsInAllowedPositions(OponentZone, 0, 2))
-    {
-        BoostZone(OponentZone, 0, 2);
-    }
-}
-     void HandleNuevaHabilidad()
-    {
-    // Implementar la lógica específica para esta nueva habilidad
-    }
-  bool IsInAllowedPositions(List<GameObject> zone, params int[] positions)
-{
-    foreach (int pos in positions)
-    {
-        if (pos >= 0 && pos < zone.Count)
+        List<GameObject> zone = new List<GameObject>(Selector());
+        GameObject targetCard = FindCardWithMaxPower(zone);
+        if (targetCard != null)
         {
-            Debug.Log("Verificando posición: " + pos + ", Zona: " + zone[pos].name);
-            if (this.transform.parent == zone[pos].transform)
+            targetCard.transform.SetParent(GetGraveyard().transform);
+        }
+    }
+
+    void HandleDeleteMin()
+    {
+        List<GameObject> zone = new List<GameObject>(Selector());
+        GameObject targetCard = FindCardWithMinPower(zone);
+        if (targetCard != null)
+        {
+            targetCard.transform.SetParent(GetGraveyard().transform);
+        }
+    }
+
+    void HandleAddCard()
+    {
+        Draw drawScript = FindObjectOfType<Draw>();
+        Button drawButton = drawScript.GetComponent<Button>();
+        if (drawButton != null)
+        {
+            drawButton.interactable = true;
+        }
+    }
+
+    void HandleSendToGraveyard()
+    {
+        List<GameObject> zone = new List<GameObject>(Selector());
+        SendZoneToGraveyard(zone, GetGraveyard());
+    }
+
+    void HandleEffectClima()
+    {
+        List<GameObject> zone = new List<GameObject>(Selector());
+        SendZoneToGraveyard(zone, GetGraveyard());
+    }
+
+    void HandleEffectBoost()
+    {
+        List<GameObject> zone = new List<GameObject>(Selector());
+        BoostZone(zone, 0, 2);
+    }
+
+    void HandleNuevaHabilidad()
+    {
+        // Implementar la lógica específica para esta nueva habilidad
+    }
+
+    // Métodos auxiliares (sin cambios)
+    bool IsInAllowedPositions(List<GameObject> zone, params int[] positions)
+    {
+        foreach (int pos in positions)
+        {
+            if (pos >= 0 && pos < zone.Count)
             {
-                Debug.Log("La carta está en la posición permitida: " + pos);
-                return true;
+                if (this.transform.parent == zone[pos].transform)
+                {
+                    return true;
+                }
             }
         }
+        return false;
     }
-    return false;
-}
-
-
 
     void MoveCardToZone(GameObject hand, List<GameObject> zone, params int[] targetPositions)
     {
@@ -278,11 +254,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
-     GameObject FindCardWithMaxPower(List<GameObject> zone)
+    GameObject FindCardWithMaxPower(List<GameObject> zone)
     {
         int maxPower = 0;
         GameObject targetCard = null;
-
         for (int i = 0; i <= 2; i++)
         {
             foreach (Transform cardTransform in zone[i].transform)
@@ -295,15 +270,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 }
             }
         }
-
         return targetCard;
     }
 
-     GameObject FindCardWithMinPower(List<GameObject> zone)
+    GameObject FindCardWithMinPower(List<GameObject> zone)
     {
         int minPower = int.MaxValue;
         GameObject targetCard = null;
-
         for (int i = 0; i <= 2; i++)
         {
             foreach (Transform cardTransform in zone[i].transform)
@@ -316,12 +289,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 }
             }
         }
-
         return targetCard;
     }
 
-     void SendZoneToGraveyard(List<GameObject> zone, GameObject graveyard)
+    void SendZoneToGraveyard(List<GameObject> zone, GameObject graveyard)
     {
+       
+        
         for (int i = 0; i <= 2; i++)
         {
             foreach (Transform cardTransform in zone[i].transform)
@@ -331,7 +305,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
-     void BoostZone(List<GameObject> zone, int targetPosition, int boostAmount)
+    void BoostZone(List<GameObject> zone, int targetPosition, int boostAmount)
     {
         foreach (Transform cardTransform in zone[targetPosition].transform)
         {
@@ -340,7 +314,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             cardComponent.powerText.text = cardComponent.power.ToString();
         }
     }
-  }
+
+   
+}
+  
+ 
+
+
+
  
 
 

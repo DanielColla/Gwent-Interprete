@@ -31,7 +31,18 @@ public class ThisCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
+        // Verifica si thisId es un índice válido dentro del rango de cardList
+    if (thisId >= 0 && thisId < CardDataBase.cardList.Count)
+    {
         thisCard.Add(CardDataBase.cardList[thisId]);
+    }
+    else
+    {
+        Debug.LogError($"El valor de thisId ({thisId}) está fuera de rango. Asegúrate de que el ID sea válido y que la lista de cartas esté inicializada correctamente.");
+    }
+
+    
+      //  thisCard.Add(CardDataBase.cardList[thisId]);
         Zoom = GameObject.Find("Zoom");
    
     }

@@ -7,6 +7,8 @@ MonoImporter:
   - Hand: {instanceID: 0}
   - HandOponent: {instanceID: 0}
   - parentToReturnTo: {instanceID: 0}
+  - MYGraveyard: {instanceID: 0}
+  - OponentGraveyard: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

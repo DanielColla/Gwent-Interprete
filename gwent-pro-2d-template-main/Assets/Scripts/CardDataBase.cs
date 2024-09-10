@@ -8,6 +8,7 @@ public class CardDataBase : MonoBehaviour
     public static List<Card> cardList= new List<Card>();
     void Awake()
     {//sendToGraveyard,effectclima,effectboost
+   
      cardList.AddRange(CardPersistence.LoadGeneratedCards()); 
       cardList.Add(new Card(37,"Mash",0,"effectboost",Resources.Load<Sprite>("36"),"aumento","none","none"));
      cardList.Add(new Card(38,"Mash",0,"effectboost",Resources.Load<Sprite>("37"),"aumento","none","none"));
@@ -24,8 +25,8 @@ public class CardDataBase : MonoBehaviour
 //Master
      //oro
      //distancia R
-     cardList.Add(new Card(1234,"Rin Tohsaka",4,"espada",Resources.Load<Sprite>("0"),"lider","R","Master"));
-     cardList.Add(new Card(28590,"Tokiomi Tohsaka",9,"magia",Resources.Load<Sprite>("1"),"oro","R","Master"));
+     cardList.Add(new Card(128,"Rin Tohsaka",4,"espada",Resources.Load<Sprite>("0"),"lider","R","Master"));
+     cardList.Add(new Card(129,"Tokiomi Tohsaka",9,"magia",Resources.Load<Sprite>("1"),"oro","R","Master"));
      cardList.Add(new Card(389,"Matou Kariya",8,"arco",Resources.Load<Sprite>("2"),"oro","R","Master"));
      cardList.Add(new Card(444,"Matou Zouken",8,"arco",Resources.Load<Sprite>("3"),"oro","R","Master"));
      
@@ -44,10 +45,10 @@ public class CardDataBase : MonoBehaviour
      cardList.Add(new Card(944,"Saber",7,"arco",Resources.Load<Sprite>("8"),"oro","M","Servant"));
      cardList.Add(new Card(1044,"Neron",8,"arco",Resources.Load<Sprite>("9"),"oro","M","Servant"));
      //asedio S
-     cardList.Add(new Card(1144,"Joan of Arc",3,"arco",Resources.Load<Sprite>("10"),"oro","S","Servant"));
-     cardList.Add(new Card(1244,"Saber Lancer",9,"arco",Resources.Load<Sprite>("11"),"oro","S","Servant"));
-     cardList.Add(new Card(1344,"Joan of Arc alter",4,"arco",Resources.Load<Sprite>("12"),"oro","S","Servant"));
-     cardList.Add(new Card(1444,"Enkidu",8,"arco",Resources.Load<Sprite>("13"),"oro","S","Servant"));
+     cardList.Add(new Card(180,"Joan of Arc",3,"arco",Resources.Load<Sprite>("10"),"oro","S","Servant"));
+     cardList.Add(new Card(181,"Saber Lancer",9,"arco",Resources.Load<Sprite>("11"),"oro","S","Servant"));
+     cardList.Add(new Card(158,"Joan of Arc alter",4,"arco",Resources.Load<Sprite>("12"),"oro","S","Servant"));
+     cardList.Add(new Card(159,"Enkidu",8,"arco",Resources.Load<Sprite>("13"),"oro","S","Servant"));
      //a distancia R
      cardList.Add(new Card(15,"Gilgamesh",9,"arco",Resources.Load<Sprite>("14"),"oro","R","Servant"));
      cardList.Add(new Card(16,"Merlin",4,"arco",Resources.Load<Sprite>("15"),"oro","R","Servant"));
@@ -90,6 +91,7 @@ public class CardDataBase : MonoBehaviour
      cardList.Add(new Card(38,"Mash",0,"effectboost",Resources.Load<Sprite>("38"),"aumento","none","none"));
      cardList.Add(new Card(39,"Mash",0,"effectboost",Resources.Load<Sprite>("39"),"aumento","none","none"));
      cardList.Add(new Card(40,"Mash",0,"effectboost",Resources.Load<Sprite>("40"),"aumento","none","none"));
+     Debug.Log($"Se han agregado {cardList.Count} cartas a CardDataBase.");
     }
  
         
